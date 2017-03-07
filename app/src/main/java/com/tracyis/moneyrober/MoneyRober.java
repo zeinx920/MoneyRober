@@ -63,7 +63,7 @@ public class MoneyRober extends AccessibilityService {
         AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
         if (nodeInfo != null) {
             List<AccessibilityNodeInfo> list = nodeInfo
-                    .findAccessibilityNodeInfosByText("宇宙超级无敌全自动抢红包机器人");
+                    .findAccessibilityNodeInfosByText("抢红包");
             for (AccessibilityNodeInfo n : list) {
                 n.performAction(AccessibilityNodeInfo.ACTION_CLICK);
             }
@@ -77,11 +77,6 @@ public class MoneyRober extends AccessibilityService {
         recycle(rootNode);
     }
 
-    /**
-     * 打印一个节点的结构
-     *
-     * @param info
-     */
     @SuppressLint("NewApi")
     public void recycle(AccessibilityNodeInfo info) {
         if (info.getChildCount() == 0) {
@@ -100,13 +95,14 @@ public class MoneyRober extends AccessibilityService {
                 }
             }
 
-        } else {
-            for (int i = 0; i < info.getChildCount(); i++) {
-                if (info.getChild(i) != null) {
-                    recycle(info.getChild(i));
-                }
-            }
         }
+//        else {
+//            for (int i = 0; i < info.getChildCount(); i++) {
+//                if (info.getChild(i) != null) {
+//                    recycle(info.getChild(i));
+//                }
+//            }
+//        }
     }
 
     @Override
