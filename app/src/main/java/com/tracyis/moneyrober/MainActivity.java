@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+
+	private TextView mView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by Trasys on 2017/3/7.
  */
+
 public class MoneyRober extends AccessibilityService {
 
     @Override
@@ -26,9 +27,7 @@ public class MoneyRober extends AccessibilityService {
                         String content = text.toString();
                         if (content.contains("[微信红包]")) {
                             //模拟打开通知栏消息
-                            if (event.getParcelableData() != null
-                                    &&
-                                    event.getParcelableData() instanceof Notification) {
+                            if (event.getParcelableData() != null && event.getParcelableData() instanceof Notification) {
                                 Notification notification = (Notification) event.getParcelableData();
                                 PendingIntent pendingIntent = notification.contentIntent;
                                 try {
@@ -55,9 +54,6 @@ public class MoneyRober extends AccessibilityService {
         }
     }
 
-    /**
-     * 查找到
-     */
     @SuppressLint("NewApi")
     private void openPacket() {
         AccessibilityNodeInfo nodeInfo = getRootInActiveWindow();
@@ -68,7 +64,6 @@ public class MoneyRober extends AccessibilityService {
                 n.performAction(AccessibilityNodeInfo.ACTION_CLICK);
             }
         }
-
     }
 
     @SuppressLint("NewApi")
@@ -91,23 +86,18 @@ public class MoneyRober extends AccessibilityService {
                         }
                         parent = parent.getParent();
                     }
-
                 }
             }
-
+        } else {
+            for (int i = 0; i < info.getChildCount(); i++) {
+                if (info.getChild(i) != null) {
+                    recycle(info.getChild(i));
+                }
+            }
         }
-//        else {
-//            for (int i = 0; i < info.getChildCount(); i++) {
-//                if (info.getChild(i) != null) {
-//                    recycle(info.getChild(i));
-//                }
-//            }
-//        }
     }
 
     @Override
     public void onInterrupt() {
     }
-
-
 }
