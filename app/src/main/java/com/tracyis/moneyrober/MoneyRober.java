@@ -39,6 +39,7 @@ public class MoneyRober extends AccessibilityService {
                         }
                     }
                 }
+
                 break;
             //第二步：监听是否进入微信红包消息界面
             case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
@@ -74,6 +75,8 @@ public class MoneyRober extends AccessibilityService {
 
     @SuppressLint("NewApi")
     public void recycle(AccessibilityNodeInfo info) {
+
+        //会重复进入已经抢过的红包
         if (info.getChildCount() == 0) {
             if (info.getText() != null) {
                 if ("领取红包".equals(info.getText().toString())) {
